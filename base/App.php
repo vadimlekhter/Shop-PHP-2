@@ -50,9 +50,14 @@ class App
         $controllerClass = $this->config['controllerNamespace'] . ucfirst($controllerName) . 'Controller';
 
         if (class_exists($controllerClass)) {
+
             $controller = new $controllerClass(
-                new \app\services\renderers\TemplateRenderer()
+                new $this->config['components']['renderer']['class']
             );
+
+//            $controller = new $controllerClass(
+//                new \app\services\renderers\TemplateRenderer()
+//            );
 
             /*$controller = new $controllerClass(
                 new \app\services\renderers\TwigRenderer()
